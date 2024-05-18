@@ -1,8 +1,33 @@
-<div class="login">login</div>
-<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-  <label for="email">Email: </label>
-  <input id="email" type="email" formControlName="email" />
+<div class="login">
+  <h2 class="title">Log In</h2>
+  <form class="form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <div class="item">
+      <label for="email">Email: </label>
+      <input id="email" type="email" formControlName="email" />
+      <div
+        *ngIf="
+          (loginForm!.get('email')!.touched || isSubmitted) &&
+          loginForm.hasError('email')
+        "
+      >
+        {{ loginForm.getError("email") }}
+      </div>
+    </div>
 
-  <label for="password">Password: </label>
-  <input id="password" type="password" formControlName="password" />
-</form>
+    <div class="item">
+      <label for="password">Password: </label>
+      <input id="password" type="password" formControlName="password" />
+      <div
+        *ngIf="
+          (loginForm!.get('email')!.touched || isSubmitted) &&
+          loginForm.hasError('email')
+        "
+      >
+        {{ loginForm.getError("email") }}
+      </div>
+    </div>
+
+    <button type="submit">Login</button>
+  </form>
+  <a routerLink="/register">New user? Register here</a>
+</div>
