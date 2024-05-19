@@ -1,0 +1,32 @@
+<form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+  <div class="item">
+    <label for="name">Name: </label>
+    <input id="name" type="text" formControlName="name" required />
+    <div>
+      {{ productForm.getError("name") | firstUpper }}
+    </div>
+  </div>
+
+  <div class="item">
+    <label for="price">Price: </label>
+    <input id="price" type="number" formControlName="price" required />
+    <div>
+      {{ productForm.getError("price") }}
+    </div>
+  </div>
+
+  <div class="item">
+    <label for="description">Description: </label>
+    <input
+      id="description"
+      type="text"
+      formControlName="description"
+      required
+    />
+    <div>
+      {{ productForm.getError("description") | firstUpper }}
+    </div>
+  </div>
+
+  <button type="submit">Add</button>
+</form>

@@ -1,9 +1,12 @@
 import { Routes } from '@angular/router';
-import { LoginComponent } from './components/login/login.component';
-import { RegisterComponent } from './components/register/register.component';
-import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { LoginComponent } from './views/login/login.component';
+import { RegisterComponent } from './views/register/register.component';
+import { PageNotFoundComponent } from './views/page-not-found/page-not-found.component';
 import { HomeComponent } from './components/home/home.component';
 import { authGuard } from './guards/auth.guard';
+import { ProductsComponent } from './views/products/products.component';
+import { ProductComponent } from './views/product/product.component';
+import { ProductFormComponent } from './views/product-form/product-form.component';
 
 export const routes: Routes = [
   {
@@ -15,10 +18,21 @@ export const routes: Routes = [
     component: RegisterComponent,
   },
   {
-    path: '',
+    path: 'products',
     component: HomeComponent,
-    pathMatch: 'full',
-    canActivate: [authGuard],
+    children: [
+      { path: '', component: ProductsComponent },
+      {
+        path: 'new',
+        component: ProductFormComponent,
+      },
+      {
+        path: ':productId',
+        component: ProductComponent,
+      },
+    ],
+    // pathMatch: 'full',
+    // canActivate: [authGuard],
   },
   {
     path: '**',
