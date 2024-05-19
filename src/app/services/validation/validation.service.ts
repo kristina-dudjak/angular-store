@@ -11,6 +11,12 @@ export class ValidationService {
       const form = control.get(controlName);
       if (!form?.errors) return null;
       const [error] = Object.keys(form.errors);
+      if (error === 'maxlength') {
+        return { [controlName]: `${controlName} ${ValidationMessages[error]}` };
+      }
+      if (error === 'pattern' && controlName === 'price') {
+        return { [controlName]: ValidationMessages['price'] };
+      }
       return { [controlName]: ValidationMessages[error] };
     };
   }

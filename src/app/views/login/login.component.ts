@@ -1,24 +1,24 @@
 import { Component, inject } from '@angular/core';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { ReactiveFormsModule, Validators, FormBuilder } from '@angular/forms';
 import { PasswordRegex } from '../../shared/const/PasswordRegex';
 import { AuthService } from '../../services/auth/auth.service';
 import { Router, RouterLink } from '@angular/router';
-import { CommonModule } from '@angular/common';
 import { ValidationService } from '../../services/validation/validation.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-register',
+  selector: 'app-login',
   standalone: true,
   imports: [ReactiveFormsModule, RouterLink, CommonModule],
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css'],
+  templateUrl: './login.component.html',
+  styleUrl: './login.component.css',
 })
-export class RegisterComponent {
+export class LoginComponent {
   authService = inject(AuthService);
   formBuilder = inject(FormBuilder);
   router = inject(Router);
   isSubmitted = false;
-  registerForm = this.formBuilder.group(
+  loginForm = this.formBuilder.group(
     {
       email: ['', [Validators.required, Validators.email]],
       password: [
@@ -41,10 +41,10 @@ export class RegisterComponent {
 
   onSubmit() {
     this.isSubmitted = true;
-    const rawForm = this.registerForm.getRawValue();
-    if (this.registerForm.valid)
+    const rawForm = this.loginForm.getRawValue();
+    if (this.loginForm.valid)
       this.authService
-        .register(rawForm.email!, rawForm.password!)
-        .subscribe(() => this.router.navigateByUrl('/'));
+        .login(rawForm.email!, rawForm.password!)
+        .subscribe(() => this.router.navigateByUrl('/products'));
   }
 }
