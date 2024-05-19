@@ -1,0 +1,48 @@
+.wrapper {
+  background-color: #eef7ff;
+}
+
+.title,
+.label {
+  color: #4d869c;
+}
+
+.login {
+  height: calc(100vh - 70px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 80%;
+  margin: 0 auto;
+  gap: 40px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid gray;
+  gap: 28px;
+  padding: 20px;
+  border-radius: 8px;
+  width: 240px;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.error {
+  color: red;
+}
+
+.button {
+  background-color: #4d869c;
+  color: #eef7ff;
+  padding: 8px;
+}
+
+.link {
+  color: #4d869c;
+}

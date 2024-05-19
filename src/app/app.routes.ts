@@ -7,6 +7,8 @@ import { authGuard } from './guards/auth.guard';
 import { ProductsComponent } from './views/products/products.component';
 import { ProductComponent } from './views/product/product.component';
 import { ProductFormComponent } from './views/product-form/product-form.component';
+import { ProductInfoComponent } from './components/product-info/product-info.component';
+import { AdminsComponent } from './views/admins/admins.component';
 
 export const routes: Routes = [
   {
@@ -29,10 +31,23 @@ export const routes: Routes = [
       {
         path: ':productId',
         component: ProductComponent,
+        children: [
+          {
+            path: '',
+            component: ProductInfoComponent,
+          },
+          {
+            path: 'edit',
+            component: ProductFormComponent,
+          },
+        ],
       },
     ],
-    // pathMatch: 'full',
-    // canActivate: [authGuard],
+    canActivate: [authGuard],
+  },
+  {
+    path: 'admins',
+    component: AdminsComponent,
   },
   {
     path: '**',

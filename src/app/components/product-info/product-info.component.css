@@ -1,0 +1,36 @@
+.wrapper {
+  background-color: #eef7ff;
+}
+
+.product {
+  height: calc(100vh - 68px);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-info {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid gray;
+  padding: 40px;
+  max-width: 80%;
+  gap: 12px;
+  border-radius: 8px;
+}
+
+.img {
+  height: 200px;
+  width: 200px;
+}
+
+.button {
+  background-color: #4d869c;
+  color: #eef7ff;
+  padding: 8px;
+}
+
+.delete {
+  background-color: #dc8686;
+}

@@ -1,0 +1,16 @@
+.product {
+  border: 2px solid #4d869c;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s;
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.img {
+  height: 100px;
+  width: 100px;
+  align-self: center;
+}

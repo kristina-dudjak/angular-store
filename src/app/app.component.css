@@ -1,8 +1,37 @@
 .header {
-  background-color: aquamarine;
+  background-color: #4d869c;
+}
+
+.items {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+.title {
+  margin: 0;
+  padding: 12px;
+  color: #eef7ff;
 }
 
 .list {
   display: flex;
   gap: 20px;
+  margin: 0;
+  padding: 12px;
+  list-style-type: none;
+}
+
+.button {
+  cursor: pointer;
+  background-color: #4d869c;
+  border: 1px solid #025464;
+  color: #025464;
+  padding: 8px;
+}
+
+.link {
+  color: #eef7ff;
 }

@@ -1,4 +1,10 @@
-<app-product-item
-  *ngFor="let product of products()"
-  [product]="product"
-></app-product-item>
+<div [class.empty]="!products().length" class="items">
+  @if (products().length) {
+  <app-product-item
+    *ngFor="let product of products()"
+    [product]="product"
+  ></app-product-item>
+  } @else {
+  <p class="empty">There are no products.</p>
+  }
+</div>

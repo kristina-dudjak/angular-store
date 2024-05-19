@@ -1,33 +1,42 @@
-<div class="login">
-  <h2 class="title">Log In</h2>
-  <form class="form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-    <div class="item">
-      <label for="email">Email: </label>
-      <input id="email" type="email" formControlName="email" />
-      <div
-        *ngIf="
-          (loginForm!.get('email')!.touched || isSubmitted) &&
-          loginForm.hasError('email')
-        "
-      >
-        {{ loginForm.getError("email") }}
+<div class="wrapper">
+  <div class="login">
+    <h1 class="title">Login</h1>
+    <form class="form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div class="item">
+        <label class="label" for="email">Email: </label>
+        <input id="email" type="email" formControlName="email" required />
+        <small
+          class="error"
+          *ngIf="
+            (loginForm!.get('email')!.touched || isSubmitted) &&
+            loginForm.hasError('email')
+          "
+        >
+          {{ loginForm.getError("email") }}</small
+        >
       </div>
-    </div>
 
-    <div class="item">
-      <label for="password">Password: </label>
-      <input id="password" type="password" formControlName="password" />
-      <div
-        *ngIf="
-          (loginForm!.get('email')!.touched || isSubmitted) &&
-          loginForm.hasError('email')
-        "
-      >
-        {{ loginForm.getError("email") }}
+      <div class="item">
+        <label class="label" for="password">Password: </label>
+        <input
+          id="password"
+          type="password"
+          formControlName="password"
+          required
+        />
+        <small
+          class="error"
+          *ngIf="
+            (loginForm!.get('password')!.touched || isSubmitted) &&
+            loginForm.hasError('password')
+          "
+          [innerHTML]="loginForm.getError('password') | newLine"
+        >
+        </small>
       </div>
-    </div>
 
-    <button type="submit">Login</button>
-  </form>
-  <a routerLink="/register">New user? Register here</a>
+      <button class="button" type="submit">Login</button>
+    </form>
+    <a class="link" routerLink="/register">New user? Register here</a>
+  </div>
 </div>

@@ -1,32 +1,62 @@
-<form [formGroup]="productForm" (ngSubmit)="onSubmit()">
-  <div class="item">
-    <label for="name">Name: </label>
-    <input id="name" type="text" formControlName="name" required />
-    <div>
-      {{ productForm.getError("name") | firstUpper }}
-    </div>
-  </div>
+<div class="wrapper">
+  <div class="product">
+    <form
+      class="productForm"
+      [formGroup]="productForm!"
+      (ngSubmit)="onSubmit()"
+    >
+      <div class="item">
+        <label class="label" for="name">Name: </label>
+        <input id="name" type="text" formControlName="name" required />
+        <small
+          class="error"
+          *ngIf="
+            (productForm!.get('name')!.touched || isSubmitted) &&
+            productForm!.hasError('name')
+          "
+        >
+          {{ productForm!.getError("name") | firstUpper }}</small
+        >
+      </div>
 
-  <div class="item">
-    <label for="price">Price: </label>
-    <input id="price" type="number" formControlName="price" required />
-    <div>
-      {{ productForm.getError("price") }}
-    </div>
-  </div>
+      <div class="item">
+        <label class="label" for="price">Price: </label>
+        <input id="price" type="number" formControlName="price" required />
+        <small
+          class="error"
+          *ngIf="
+            (productForm!.get('price')!.touched || isSubmitted) &&
+            productForm!.hasError('price')
+          "
+        >
+          {{ productForm!.getError("price") }}</small
+        >
+      </div>
 
-  <div class="item">
-    <label for="description">Description: </label>
-    <input
-      id="description"
-      type="text"
-      formControlName="description"
-      required
-    />
-    <div>
-      {{ productForm.getError("description") | firstUpper }}
-    </div>
+      <div class="item">
+        <label class="label" for="description">Description: </label>
+        <textarea
+          id="description"
+          type="text"
+          formControlName="description"
+          rows="{6}"
+          required
+        ></textarea>
+        <small
+          class="error"
+          *ngIf="
+            (productForm!.get('description')!.touched || isSubmitted) &&
+            productForm!.hasError('description')
+          "
+        >
+          {{ productForm!.getError("description") | firstUpper }}
+        </small>
+      </div>
+      @if (this.router.url.includes('new')) {
+      <button class="button" type="submit">Add new product</button>
+      } @else {
+      <button class="button" type="submit">Edit product</button>
+      }
+    </form>
   </div>
-
-  <button type="submit">Add</button>
-</form>
+</div>

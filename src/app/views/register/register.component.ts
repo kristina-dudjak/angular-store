@@ -5,16 +5,20 @@ import { AuthService } from '../../services/auth/auth.service';
 import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { ValidationService } from '../../services/validation/validation.service';
+import { DbService } from '../../services/db/db.service';
+import { User } from '../../shared/models/User';
+import { NewLinePipe } from '../../shared/pipes/new-line.pipe';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [ReactiveFormsModule, RouterLink, CommonModule],
+  imports: [ReactiveFormsModule, RouterLink, CommonModule, NewLinePipe],
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent {
   authService = inject(AuthService);
+  dbService = inject(DbService);
   formBuilder = inject(FormBuilder);
   router = inject(Router);
   isSubmitted = false;
@@ -45,6 +49,15 @@ export class RegisterComponent {
     if (this.registerForm.valid)
       this.authService
         .register(rawForm.email!, rawForm.password!)
-        .subscribe(() => this.router.navigateByUrl('/products'));
+        .subscribe(({ user }) => {
+          const u: User = {
+            uid: user.uid,
+            email: rawForm.email!,
+            isAdmin: false,
+          };
+          this.dbService.addUser(u.uid, u.email);
+          this.authService.currentUserSig.set(u);
+          this.router.navigateByUrl('/products');
+        });
   }
 }

@@ -1,0 +1,47 @@
+.wrapper {
+  background-color: #eef7ff;
+}
+
+.title,
+.label {
+  color: #4d869c;
+}
+
+.product {
+  height: calc(100vh - 68px);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.productForm {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  border: 2px solid gray;
+  max-width: 80%;
+  gap: 28px;
+  width: 240px;
+  border-radius: 8px;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.error {
+  color: red;
+}
+
+.button {
+  background-color: #4d869c;
+  color: #eef7ff;
+  padding: 8px;
+}
+
+.link {
+  color: #4d869c;
+}
