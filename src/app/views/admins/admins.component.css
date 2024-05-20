@@ -1,0 +1,41 @@
+.wrapper {
+  background-color: #eef7ff;
+}
+
+.title,
+.link {
+  color: #4d869c;
+  margin: 0;
+}
+
+.admins {
+  height: calc(100vh - 86px);
+  max-width: 80%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding-top: 24px;
+}
+
+.form {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.error {
+  color: red;
+}
+
+.button {
+  background-color: #4d869c;
+  color: #eef7ff;
+  padding: 8px;
+}

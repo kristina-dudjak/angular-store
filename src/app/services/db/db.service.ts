@@ -62,6 +62,14 @@ export class DbService {
     return product;
   }
 
+  updateUser(user: User) {
+    const u = {
+      email: user.email,
+      isAdmin: true,
+    };
+    return from(setDoc(doc(this.firestore, `users/${user.uid}`), u));
+  }
+
   addProduct(
     name: string,
     price: number,

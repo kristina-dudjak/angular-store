@@ -47,7 +47,8 @@ export const routes: Routes = [
   },
   {
     path: 'admins',
-    component: AdminsComponent,
+    component: HomeComponent,
+    children: [{ path: '', component: AdminsComponent }],
   },
   {
     path: '**',

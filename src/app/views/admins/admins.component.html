@@ -1,0 +1,22 @@
+<div class="wrapper">
+  <div class="admins">
+    <h2 class="title">Admins:</h2>
+    <form class="form" [formGroup]="adminForm!" (ngSubmit)="onSubmit()">
+      <div class="item">
+        <label class="label" for="email">Email: </label>
+        <input id="email" type="email" formControlName="email" required />
+        <small
+          class="error"
+          *ngIf="
+            (adminForm!.get('email')!.touched || isSubmitted) &&
+            adminForm!.hasError('email')
+          "
+        >
+          {{ adminForm!.getError("email") }}</small
+        >
+      </div>
+      <button class="button" type="submit">Add new admin</button>
+    </form>
+    <app-admin-list></app-admin-list>
+  </div>
+</div>

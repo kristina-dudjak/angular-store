@@ -1,0 +1,14 @@
+.items {
+  display: grid;
+  gap: 20px;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fill, 160px);
+}
+
+.items.empty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+  grid-template-columns: none;
+}

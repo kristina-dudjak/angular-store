@@ -1,0 +1,10 @@
+<div [class.empty]="!admins().length" class="items">
+  @if (admins().length) {
+  <app-admin-item
+    *ngFor="let admin of admins()"
+    [admin]="admin"
+  ></app-admin-item>
+  } @else {
+  <p class="empty">There are no admins.</p>
+  }
+</div>
